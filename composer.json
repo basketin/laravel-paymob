@@ -1,0 +1,51 @@
+{
+    "name": "outmart/laravel-paymob",
+    "description": "Dealing with payments through the Egyptian payment gateway PayMob",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "ecommerce",
+        "outmart",
+        "payments",
+        "baskets"
+    ],
+    "authors": [
+        {
+            "name": "Karim Mohamed (Komtcho)",
+            "email": "komicho1996@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.17",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "OutMart\\Paymob\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OutMart\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OutMart\\Paymob\\PaymobServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
