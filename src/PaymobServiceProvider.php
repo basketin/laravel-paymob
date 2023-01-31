@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class PaymobServiceProvider extends ServiceProvider
 {
-
     /**
      * Register services.
      *
@@ -14,6 +13,7 @@ class PaymobServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__ . '/../config/paymob.php', 'paymob');
     }
 
     /**
@@ -23,5 +23,6 @@ class PaymobServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //
     }
 }
