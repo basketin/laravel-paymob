@@ -6,6 +6,11 @@ return [
     | OutMart Paymob payments
     |--------------------------------------------------------------------------
      */
+
+    'callback' => [
+        'prefix' => 'outmart/paymob',
+    ],
+
     'payments' => [
         'ValU' => [
             'api_key' => '<api_key>',
