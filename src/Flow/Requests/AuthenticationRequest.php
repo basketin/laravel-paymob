@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Paymob\Flow;
+namespace Basketin\Paymob\Flow\Requests;
 
 use Komtcho\Shot\Contracts\ShootingPost;
 use Komtcho\Shot\Shooting;
 
-class Authentication extends Shooting implements ShootingPost
+class AuthenticationRequest extends Shooting implements ShootingPost
 {
     protected $url = 'https://accept.paymob.com/api/auth/tokens';
 

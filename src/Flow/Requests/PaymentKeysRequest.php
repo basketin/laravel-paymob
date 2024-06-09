@@ -1,6 +1,6 @@
 <?php
 
-namespace Basketin\Paymob\Flow;
+namespace Basketin\Paymob\Flow\Requests;
 
 use Komtcho\Shot\Contracts\ShootingPost;
 use Komtcho\Shot\Shooting;
@@ -16,6 +16,7 @@ class PaymentKeysRequest extends Shooting implements ShootingPost
 
     public function __construct($apiKey, $amount, $orderId, $integrationId)
     {
+        // dd($apiKey, $amount, $orderId, $integrationId);
         $this->apiKey = $apiKey;
         $this->amount = $amount;
         $this->orderId = $orderId;

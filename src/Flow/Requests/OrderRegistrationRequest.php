@@ -1,11 +1,11 @@
 <?php
 
-namespace Basketin\Paymob\Flow;
+namespace Basketin\Paymob\Flow\Requests;
 
 use Komtcho\Shot\Contracts\ShootingPost;
 use Komtcho\Shot\Shooting;
 
-class OrderRegistration extends Shooting implements ShootingPost
+class OrderRegistrationRequest extends Shooting implements ShootingPost
 {
     protected $url = 'https://accept.paymob.com/api/ecommerce/orders';
 

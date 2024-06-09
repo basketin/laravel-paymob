@@ -2,10 +2,12 @@
 
 namespace Basketin\Paymob;
 
-use Basketin\Paymob\Flow\Authentication;
-use Basketin\Paymob\Flow\OrderRegistration;
-use Basketin\Paymob\Flow\PaymentKeysRequest;
-use Basketin\Paymob\Models\Transaction;
+use Basketin\Paymob\Configs\PaymentMethod;
+use Basketin\Paymob\Flow\CallPaymobTask;
+use Basketin\Paymob\Flow\GenerateLinkTask;
+use Basketin\Paymob\Flow\SavePaymentRecordTask;
+use Basketin\Paymob\PaymentInit;
+use Illuminate\Support\Facades\Pipeline;
 
 class Pay
 {
@@ -18,11 +20,19 @@ class Pay
      *
      * @return  self
      */
-    public function setMethod($method)
+    public function setMethod(PaymentMethod $method)
     {
         $this->method = $method;
 
         return $this;
+    }
+
+    /**
+     * Get the value of amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
     }
 
     /**
@@ -51,28 +61,12 @@ class Pay
 
     public function getLink()
     {
-        $config = config('paymob.payments.' . $this->method);
-
-        $responseAuthentication = new Authentication($config['api_key']);
-        $authenticationToken = $responseAuthentication->call();
-
-        $responseOrderRegistration = new OrderRegistration($authenticationToken, $this->amount);
-        $orderId = $responseOrderRegistration->call();
-
-        $responsePaymentKeysRequest = new PaymentKeysRequest(
-            $authenticationToken,
-            $this->amount,
-            $orderId,
-            $config['integration_id']);
-        $paymentToken = $responsePaymentKeysRequest->call();
-
-        Transaction::create([
-            'merchant_order_id' => $this->merchantOrderId,
-            'paymob_order_id' => $orderId,
-            'payment_method' => $this->method,
-            'amount' => $this->amount,
-        ]);
-
-        return 'https://accept.paymobsolutions.com/api/acceptance/iframes/' . $config['iframe_id'] . '?payment_token=' . $paymentToken;
+        return Pipeline::send(new PaymentInit($this->method, $this->getAmount(), $this->merchantOrderId))
+            ->through([
+                CallPaymobTask::class,
+                SavePaymentRecordTask::class,
+                GenerateLinkTask::class,
+            ])
+            ->thenReturn();
     }
 }

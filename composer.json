@@ -6,7 +6,7 @@
     "keywords": [
         "laravel",
         "ecommerce",
-        "outmart",
+        "paymob",
         "payments",
         "baskets"
     ],
@@ -17,25 +17,14 @@
         }
     ],
     "require": {
-        "php": ">=8.0",
+        "php": "^8.1||^8.2",
+        "laravel/framework": "^10.0||^11.0",
         "komtcho/shot": "dev-main"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^7.17",
-        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
             "Basketin\\Paymob\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Basketin\\Tests\\": "tests/"
-        }
-    },
-    "config": {
-        "sort-packages": true
     },
     "extra": {
         "laravel": {
@@ -43,9 +32,6 @@
                 "Basketin\\Paymob\\PaymobServiceProvider"
             ]
         }
-    },
-    "scripts": {
-        "test": "./vendor/bin/phpunit tests"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

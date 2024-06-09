@@ -13,12 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('outmart_paymob_transactions', function (Blueprint $table) {
+        Schema::create('basketin_paymob_methods', function (Blueprint $table) {
+            $table->id();
+            $table->string('payment_method');
+            $table->string('api_key');
+            $table->string('integration_id');
+            $table->string('iframe_id');
+            $table->timestamps();
+        });
+
+        Schema::create('basketin_paymob_transactions', function (Blueprint $table) {
             $table->id();
             $table->integer('merchant_order_id');
             $table->integer('paymob_order_id');
             $table->string('payment_method');
-            $table->double('amount', 8, 2);
+            $table->decimal('amount', 8, 2);
             $table->enum('status', ['success', 'failed'])->nullable();
             $table->timestamps();
         });
@@ -31,6 +40,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('outmart_paymob_transactions');
+        Schema::dropIfExists('basketin_paymob_methods');
+        Schema::dropIfExists('basketin_paymob_transactions');
     }
 };

@@ -4,9 +4,9 @@ namespace Basketin\Paymob\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class Method extends Model
 {
-    protected $table = 'basketin_paymob_transactions';
+    protected $table = 'basketin_paymob_methods';
 
     /**
      * The attributes that are mass assignable.
