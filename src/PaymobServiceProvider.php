@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Paymob;
+namespace Basketin\Paymob;
 
 use Illuminate\Support\ServiceProvider;
 

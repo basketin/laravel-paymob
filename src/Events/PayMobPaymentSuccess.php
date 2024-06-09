@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Paymob\Events;
+namespace Basketin\Paymob\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

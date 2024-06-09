@@ -1,5 +1,5 @@
 {
-    "name": "outmart/laravel-paymob",
+    "name": "basketin/laravel-paymob",
     "description": "Dealing with payments through the Egyptian payment gateway PayMob",
     "type": "library",
     "license": "MIT",
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "OutMart\\Paymob\\": "src/"
+            "Basketin\\Paymob\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "OutMart\\Tests\\": "tests/"
+            "Basketin\\Tests\\": "tests/"
         }
     },
     "config": {
@@ -40,7 +40,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "OutMart\\Paymob\\PaymobServiceProvider"
+                "Basketin\\Paymob\\PaymobServiceProvider"
             ]
         }
     },

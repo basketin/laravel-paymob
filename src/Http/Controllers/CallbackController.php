@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Paymob\Http\Controllers;
+namespace Basketin\Paymob\Http\Controllers;
 
 use Illuminate\Http\Request;
-use OutMart\Paymob\Events\PayMobPaymentFailed;
-use OutMart\Paymob\Events\PayMobPaymentSuccess;
-use OutMart\Paymob\Models\Transaction;
+use Basketin\Paymob\Events\PayMobPaymentFailed;
+use Basketin\Paymob\Events\PayMobPaymentSuccess;
+use Basketin\Paymob\Models\Transaction;
 
 class CallbackController
 {

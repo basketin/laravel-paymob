@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Paymob\Models;
+namespace Basketin\Paymob\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

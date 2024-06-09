@@ -1,11 +1,11 @@
 <?php
 
-namespace OutMart\Paymob;
+namespace Basketin\Paymob;
 
-use OutMart\Paymob\Flow\Authentication;
-use OutMart\Paymob\Flow\OrderRegistration;
-use OutMart\Paymob\Flow\PaymentKeysRequest;
-use OutMart\Paymob\Models\Transaction;
+use Basketin\Paymob\Flow\Authentication;
+use Basketin\Paymob\Flow\OrderRegistration;
+use Basketin\Paymob\Flow\PaymentKeysRequest;
+use Basketin\Paymob\Models\Transaction;
 
 class Pay
 {

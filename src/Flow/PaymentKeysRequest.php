@@ -1,6 +1,6 @@
 <?php
 
-namespace OutMart\Paymob\Flow;
+namespace Basketin\Paymob\Flow;
 
 use Komtcho\Shot\Contracts\ShootingPost;
 use Komtcho\Shot\Shooting;
