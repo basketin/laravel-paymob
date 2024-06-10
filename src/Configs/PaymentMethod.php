@@ -12,7 +12,7 @@ class PaymentMethod
 
     public function __construct(public string $paymentMethod)
     {
-        if ($configPayment = config('paymob.payments.' . $paymentMethod)) {
+        if ($configPayment = config('basketin.paymob.payments.' . $paymentMethod)) {
             $this->apiKey = $configPayment['api_key'];
             $this->integrationId = $configPayment['integration_id'];
             $this->iframeId = $configPayment['iframe_id'];

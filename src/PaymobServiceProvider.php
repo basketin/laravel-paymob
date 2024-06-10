@@ -13,7 +13,7 @@ class PaymobServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/paymob.php', 'paymob');
+        $this->mergeConfigFrom(__DIR__ . '/../config/paymob.php', 'basketin.paymob');
     }
 
     /**
@@ -23,7 +23,14 @@ class PaymobServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/paymob.php' => config_path('basketin/paymob.php'),
+            ], ['basketin-paymob-config']);
+
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
     }
 }

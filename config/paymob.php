@@ -3,16 +3,16 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | OutMart Paymob payments
+    | Basketin Paymob payments
     |--------------------------------------------------------------------------
      */
 
     'callback' => [
-        'prefix' => 'outmart/paymob',
+        'prefix' => 'basketin/paymob',
     ],
 
     'payments' => [
-        'ValU' => [
+        'wallet' => [
             'api_key' => '<api_key>',
             'integration_id' => 00000,
             'iframe_id' => 00000,
