@@ -2,6 +2,7 @@
 
 namespace Basketin\Paymob;
 
+use Basketin\Paymob\Configs\AmountToCent;
 use Basketin\Paymob\Configs\PaymentMethod;
 use Basketin\Paymob\Flow\CallPaymobTask;
 use Basketin\Paymob\Flow\GenerateLinkTask;
@@ -40,9 +41,9 @@ class Pay
      *
      * @return  self
      */
-    public function setAmount($amount)
+    public function setAmount(AmountToCent $amount)
     {
-        $this->amount = $amount;
+        $this->amount = $amount->getAmount();
 
         return $this;
     }

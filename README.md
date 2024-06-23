@@ -34,12 +34,13 @@ You can create a new link for payment using the following code.
 ```php
 <?php
 
+use Basketin\Paymob\Configs\AmountToCent;
 use Basketin\Paymob\Configs\PaymentMethod;
 use Basketin\Paymob\Pay;
 
 $pay = new Pay;
 $pay->setMethod(new PaymentMethod('wallet'));
-$pay->setAmount(1000);
+$pay->setAmount(new AmountToCent(1000));
 $pay->setMerchantOrderId(1234567);
 return $pay->getLink();
 ```
