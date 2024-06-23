@@ -13,7 +13,7 @@ class PaymentInit
     private $orderId = null;
     private $paymentToken = null;
 
-    public function __construct(PaymentMethod $paymentMethod, int $amount, int $merchantOrderId)
+    public function __construct(PaymentMethod $paymentMethod, int $amount, string $merchantOrderId)
     {
         $this->paymentMethod = $paymentMethod;
         $this->amount = $amount;

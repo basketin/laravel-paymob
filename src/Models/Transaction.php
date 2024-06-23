@@ -14,7 +14,7 @@ class Transaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'merchant_order_id',
+        'merchant_order_reference',
         'paymob_order_id',
         'payment_method',
         'amount',

@@ -11,7 +11,7 @@ class SavePaymentRecordTask
     public function handle(PaymentInit $paymentInit, Closure $next)
     {
         Transaction::create([
-            'merchant_order_id' => $paymentInit->getMerchantOrderId(),
+            'merchant_order_reference' => $paymentInit->getMerchantOrderId(),
             'paymob_order_id' => $paymentInit->getOrderId(),
             'payment_method' => $paymentInit->getPaymentMethod()->getPaymentMethod(),
             'amount' => $paymentInit->getAmount(),

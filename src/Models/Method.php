@@ -14,9 +14,9 @@ class Method extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'merchant_order_id',
-        'paymob_order_id',
         'payment_method',
-        'amount',
+        'api_key',
+        'integration_id',
+        'iframe_id',
     ];
 }

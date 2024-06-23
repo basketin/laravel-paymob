@@ -24,7 +24,7 @@ return new class extends Migration
 
         Schema::create('basketin_paymob_transactions', function (Blueprint $table) {
             $table->id();
-            $table->integer('merchant_order_id');
+            $table->string('merchant_order_reference');
             $table->integer('paymob_order_id');
             $table->string('payment_method');
             $table->decimal('amount', 8, 2);
