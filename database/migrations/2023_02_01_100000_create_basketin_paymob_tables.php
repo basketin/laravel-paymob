@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('basketin_paymob_methods', function (Blueprint $table) {
             $table->id();
             $table->string('payment_method');
-            $table->string('api_key');
+            $table->text('api_key');
             $table->string('integration_id');
             $table->string('iframe_id');
             $table->timestamps();
