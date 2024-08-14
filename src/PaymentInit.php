@@ -8,15 +8,17 @@ class PaymentInit
 {
     private $paymentMethod = null;
     private $amount = null;
+    private $billingData = null;
     private $merchantOrderId = null;
     private $token = null;
     private $orderId = null;
     private $paymentToken = null;
 
-    public function __construct(PaymentMethod $paymentMethod, int $amount, string $merchantOrderId)
+    public function __construct(PaymentMethod $paymentMethod, int $amount, $billingData, string $merchantOrderId)
     {
         $this->paymentMethod = $paymentMethod;
         $this->amount = $amount;
+        $this->billingData = $billingData;
         $this->merchantOrderId = $merchantOrderId;
     }
 
@@ -34,6 +36,14 @@ class PaymentInit
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * Get the value of billingData
+     */
+    public function getBillingData()
+    {
+        return $this->billingData;
     }
 
     /**

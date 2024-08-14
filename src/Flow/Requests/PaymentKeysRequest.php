@@ -11,14 +11,16 @@ class PaymentKeysRequest extends Shooting implements ShootingPost
 
     private $apiKey;
     private $amount;
+    private $billingData;
     private $orderId;
     private $integrationId;
 
-    public function __construct($apiKey, $amount, $orderId, $integrationId)
+    public function __construct($apiKey, $amount, $billingData, $orderId, $integrationId)
     {
         // dd($apiKey, $amount, $orderId, $integrationId);
         $this->apiKey = $apiKey;
         $this->amount = $amount;
+        $this->billingData = $billingData;
         $this->orderId = $orderId;
         $this->integrationId = $integrationId;
     }
@@ -30,21 +32,21 @@ class PaymentKeysRequest extends Shooting implements ShootingPost
             'amount_cents' => $this->amount,
             'expiration' => 3600,
             'order_id' => $this->orderId,
-            // "billing_data" => [
-            //     "apartment" => "803",
-            //     "email" => "claudette09@exa.com",
-            //     "floor" => "42",
-            //     "first_name" => "Clifford",
-            //     "street" => "Ethan Land",
-            //     "building" => "8028",
-            //     "phone_number" => "+86(8)9135210487",
-            //     "shipping_method" => "PKG",
-            //     "postal_code" => "01898",
-            //     "city" => "Jaskolskiburgh",
-            //     "country" => "CR",
-            //     "last_name" => "Nicolas",
-            //     "state" => "Utah",
-            // ],
+            "billing_data" => [
+                "building" => $this->billingData->getBuilding(),
+                "apartment" => $this->billingData->getApartment(),
+                "floor" => $this->billingData->getFloor(),
+                "first_name" => $this->billingData->getFirstName(),
+                "last_name" => $this->billingData->getLastName(),
+                "phone_number" => $this->billingData->getPhoneNumber(),
+                "email" => $this->billingData->getEmail(),
+                "shipping_method" => $this->billingData->getShippingMethod(),
+                "city" => $this->billingData->getCity(),
+                "country" => $this->billingData->getCountry(),
+                "state" => $this->billingData->getState(),
+                "postal_code" => $this->billingData->getPostalCode(),
+                "street" => $this->billingData->getStreet(),
+            ],
             "currency" => "EGP",
             'integration_id' => $this->integrationId,
         ];

@@ -3,6 +3,7 @@
 namespace Basketin\Paymob;
 
 use Basketin\Paymob\Configs\AmountToCent;
+use Basketin\Paymob\Configs\BillingData;
 use Basketin\Paymob\Configs\PaymentMethod;
 use Basketin\Paymob\Flow\CallPaymobTask;
 use Basketin\Paymob\Flow\GenerateLinkTask;
@@ -14,6 +15,7 @@ class Pay
 {
     protected $method = null;
     protected $amount = null;
+    protected $billingData = null;
     protected $merchantOrderId = null;
 
     /**
@@ -49,6 +51,18 @@ class Pay
     }
 
     /**
+     * Set the value of billingData
+     *
+     * @return  self
+     */
+    public function setBillingData(BillingData $billingData)
+    {
+        $this->billingData = $billingData;
+
+        return $this;
+    }
+
+    /**
      * Set the value of merchantOrderId
      *
      * @return  self
@@ -62,7 +76,7 @@ class Pay
 
     public function getLink()
     {
-        return Pipeline::send(new PaymentInit($this->method, $this->getAmount(), $this->merchantOrderId))
+        return Pipeline::send(new PaymentInit($this->method, $this->getAmount(), $this->billingData, $this->merchantOrderId))
             ->through([
                 CallPaymobTask::class,
                 SavePaymentRecordTask::class,

@@ -21,6 +21,7 @@ class CallPaymobTask
         $responsePaymentKeysRequest = new PaymentKeysRequest(
             $authenticationToken,
             $paymentInit->getAmount(),
+            $paymentInit->getBillingData(),
             $orderId,
             $paymentInit->getPaymentMethod()->getIntegrationId(),
         );
