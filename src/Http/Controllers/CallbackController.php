@@ -23,6 +23,10 @@ class CallbackController
     {
         $transaction = Transaction::where('paymob_order_id', $obj['order']['id'])->first();
 
+        if (!$transaction) {
+            return 'Transaction not found';
+        }
+
         // success
         if ($obj['success']) {
 
